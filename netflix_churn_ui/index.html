@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Netflix Customer Intelligence</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="noise"></div><div class="scroll-progress" id="scrollProgress"></div>
+  <header class="navbar">
+    <a class="brand" href="#home"><span class="brand-mark">N</span><span class="brand-text">CUSTOMER<span>INTELLIGENCE</span></span></a>
+    <nav class="nav-links"><a href="#overview">Overview</a><a href="#predictor">Predictor</a><a href="#model">Model</a></nav>
+    <a class="nav-cta" href="#predictor">Run prediction <span>↗</span></a>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-glow glow-one"></div><div class="hero-glow glow-two"></div>
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span class="live-dot"></span> ML CHURN INTELLIGENCE</p>
+        <h1>Know who is<br /><em>about to leave.</em></h1>
+        <p class="hero-description">A customer-level churn prediction interface powered by your trained machine learning model. Enter a customer's behavior and get a probability-backed prediction in seconds.</p>
+        <div class="hero-actions"><a class="primary-btn" href="#predictor">Predict customer <span>→</span></a><a class="ghost-btn" href="#overview">Explore model <span>↓</span></a></div>
+        <div class="hero-metrics"><div><strong>99.6%</strong><span>Test accuracy*</span></div><div><strong>99.98%</strong><span>ROC-AUC*</span></div><div><strong>5K</strong><span>Customers analyzed</span></div></div>
+        <small class="metric-note">*Use your validated final-model metrics here.</small>
+      </div>
+      <div class="hero-visual reveal reveal-delay">
+        <div class="orb orb-a"></div><div class="orb orb-b"></div>
+        <div class="floating-card card-top"><span class="mini-label">MODEL STATUS</span><strong>READY</strong><i></i></div>
+        <div class="customer-card">
+          <div class="customer-card-top"><span class="mini-label">CUSTOMER SIGNAL</span><span class="signal-pill">LIVE</span></div>
+          <div class="signal-ring"><div class="ring-inner"><span>86</span><small>CHURN<br />RISK</small></div></div>
+          <div class="signal-footer"><div><span>Last login</span><b>18 days</b></div><div><span>Watch time</span><b>0.8 h/day</b></div></div>
+        </div>
+        <div class="floating-card card-bottom"><span>Prediction</span><strong>HIGH RISK</strong><b>86.4%</b></div>
+      </div>
+    </section>
+
+    <section class="section overview" id="overview">
+      <div class="section-heading reveal"><p class="eyebrow">01 / CUSTOMER SIGNALS</p><h2>Turn behavior into<br /><span>actionable signal.</span></h2><p>The interface is designed around the same features your model uses: engagement, subscription, device, payment and viewing behavior.</p></div>
+      <div class="signal-grid">
+        <article class="signal-tile reveal"><span class="tile-index">01</span><div class="tile-icon">↘</div><h3>Engagement drop</h3><p>Watch hours and daily watch time reveal changes in viewing behavior.</p><div class="tile-line"><span style="width:72%"></span></div></article>
+        <article class="signal-tile reveal reveal-delay"><span class="tile-index">02</span><div class="tile-icon">◷</div><h3>Inactivity</h3><p>Last-login behavior gives the model a direct signal of disengagement.</p><div class="tile-line"><span style="width:54%"></span></div></article>
+        <article class="signal-tile reveal reveal-delay-2"><span class="tile-index">03</span><div class="tile-icon">◉</div><h3>Customer profile</h3><p>Plan, region, device and profile usage add customer context.</p><div class="tile-line"><span style="width:84%"></span></div></article>
+      </div>
+    </section>
+
+    <section class="section predictor-section" id="predictor">
+      <div class="section-heading reveal"><p class="eyebrow">02 / PREDICTION ENGINE</p><h2>Run a customer<br /><span>through the model.</span></h2><p>Fill in the customer's profile. The frontend sends the data to your FastAPI <code>/predict</code> endpoint.</p></div>
+      <div class="predictor-layout">
+        <form class="predictor-form reveal" id="predictionForm">
+          <div class="form-header"><div><span class="mini-label">CUSTOMER INPUT</span><h3>Behavior profile</h3></div><span class="step-count">12 FEATURES</span></div>
+          <div class="form-grid">
+            <label><span>Age</span><input type="number" name="age" min="1" max="120" value="25" required /></label>
+            <label><span>Gender</span><select name="gender" required><option>Male</option><option>Female</option><option>Other</option></select></label>
+            <label><span>Subscription</span><select name="subscription_type" required><option>Basic</option><option>Standard</option><option>Premium</option></select></label>
+            <label><span>Watch hours</span><input type="number" name="watch_hours" min="0" step="0.01" value="25.5" required /></label>
+            <label><span>Last login days</span><input type="number" name="last_login_days" min="0" step="1" value="2" required /></label>
+            <label><span>Region</span><select name="region" required><option>India</option><option>North America</option><option>Europe</option><option>Asia</option><option>South America</option><option>Africa</option><option>Oceania</option></select></label>
+            <label><span>Device</span><select name="device" required><option>Mobile</option><option>TV</option><option>Laptop</option><option>Tablet</option></select></label>
+            <label><span>Monthly fee</span><input type="number" name="monthly_fee" min="0" step="0.01" value="499" required /></label>
+            <label><span>Payment method</span><select name="payment_method" required><option>UPI</option><option>Credit Card</option><option>Debit Card</option><option>PayPal</option><option>Net Banking</option></select></label>
+            <label><span>Profiles</span><input type="number" name="number_of_profiles" min="1" step="1" value="3" required /></label>
+            <label><span>Avg watch time / day</span><input type="number" name="avg_watch_time_per_day" min="0" step="0.01" value="1.5" required /></label>
+            <label><span>Favorite genre</span><select name="favorite_genre" required><option>Drama</option><option>Comedy</option><option>Action</option><option>Thriller</option><option>Documentary</option><option>Romance</option><option>Horror</option></select></label>
+          </div>
+          <div class="form-footer"><span id="apiStatus" class="api-status"><i></i> API ready</span><button class="primary-btn submit-btn" type="submit">Run prediction <span>→</span></button></div>
+        </form>
+
+        <aside class="result-panel reveal reveal-delay" id="resultPanel">
+          <div class="result-id"><span class="mini-label">MODEL OUTPUT</span><span id="resultBadge" class="result-badge neutral">WAITING</span></div>
+          <div class="result-main"><span class="result-caption">CHURN PROBABILITY</span><div class="probability" id="probability">—<small>%</small></div><div class="probability-track"><span id="probabilityBar"></span></div><h3 id="resultText">Enter a customer profile.</h3><p id="resultSubtext">Your model response will appear here after the prediction request.</p></div>
+          <div class="result-breakdown"><div><span>Prediction</span><strong id="predictionValue">—</strong></div><div><span>Endpoint</span><strong>/predict</strong></div><div><span>Model</span><strong>XGBoost</strong></div></div>
+          <div class="result-note"><span>i</span><p>Probability is returned by your FastAPI model. Use it as a model signal, not as a guaranteed outcome.</p></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section model-section" id="model">
+      <div class="model-panel reveal">
+        <div class="model-copy"><p class="eyebrow">03 / MODEL</p><h2>From raw customer data<br />to a <span>single signal.</span></h2><p>Your backend receives validated Pydantic input, converts it into a DataFrame, runs the saved model and returns a churn prediction with probability.</p><div class="pipeline"><span>Input</span><b>→</b><span>Pydantic</span><b>→</b><span>Preprocess</span><b>→</b><span>XGBoost</span><b>→</b><span>Prediction</span></div></div>
+        <div class="model-stats"><div><span>MODEL</span><strong>XGBoost</strong></div><div><span>FEATURES</span><strong>12</strong></div><div><span>OUTPUT</span><strong>0 / 1 + probability</strong></div><div><span>API</span><strong>POST /predict</strong></div></div>
+      </div>
+    </section>
+  </main>
+  <footer><span>NETFLIX CUSTOMER INTELLIGENCE</span><span>ML PROJECT / FASTAPI / XGBOOST</span></footer>
+  <script src="script.js"></script>
+</body>
+</html>
