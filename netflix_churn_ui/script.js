@@ -1,4 +1,4 @@
-const API_URL = "https://netflix-customer-churn-engagement.onrender.com";
+const API_URL = "https://netflix-customer-churn-engagement.onrender.com/predict";
 const form = document.getElementById("predictionForm");
 const probability = document.getElementById("probability");
 const probabilityBar = document.getElementById("probabilityBar");
